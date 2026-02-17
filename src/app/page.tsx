@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useI18n } from "@/i18n/useI18n";
 
+export const runtime = "edge";
+
 export default function Home() {
   const { t } = useI18n();
 

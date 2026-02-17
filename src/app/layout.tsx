@@ -6,6 +6,8 @@ import { localeFromCountry } from "@/i18n/detect";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import AppShell from "@/components/AppShell";
 
+export const runtime = "edge";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

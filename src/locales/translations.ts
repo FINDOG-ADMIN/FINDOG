@@ -324,34 +324,7 @@ export const TRANSLATIONS: Record<string, Translations> = {
     "home.registerButton": "Registrovat mazlíčka",
     "footer.freeRegistry": "Bezplatný mezinárodní bezpečnostní registr",
   },
-  nl: {
-    "site.description": "10 seconden om een vriend weer thuis te brengen.",
-    "home.tagline": "10 seconden om een vriend weer thuis te brengen.",
-    "home.foundButton": "IK HEB EEN HOND GEVONDEN",
-    "home.registerButton": "Huisdier registreren",
-    "footer.freeRegistry": "Gratis internationaal veiligheidsregister",
-  },
-  da: {
-    "site.description": "10 sekunder til at bringe en ven hjem.",
-    "home.tagline": "10 sekunder til at bringe en ven hjem.",
-    "home.foundButton": "JEG HAR FUNDET EN HUND",
-    "home.registerButton": "Registrer kæledyr",
-    "footer.freeRegistry": "Gratis internationalt sikkerhedsregister",
-  },
-  fi: {
-    "site.description": "10 sekuntia ystävän tuomiseksi kotiin.",
-    "home.tagline": "10 sekuntia ystäвän tuomiseksi kotiin.",
-    "home.foundButton": "LÖYSIN KOIRAN",
-    "home.registerButton": "Rekisteröi lemmikki",
-    "footer.freeRegistry": "Ilmainen kansainvälinen turvarekisteri",
-  },
-  hu: {
-    "site.description": "10 másodperc, hogy hazahozz egy barátot.",
-    "home.tagline": "10 másodperc, hogy hazahozz egy barátot.",
-    "home.foundButton": "TALÁLTAM EGY KUTYÁT",
-    "home.registerButton": "Kedvenc regisztrálása",
-    "footer.freeRegistry": "Ingyenes nemzetközi biztonsági nyilvántartás",
-  },pt: {
+    pt: {
     "site.description": "10 segundos para trazer um amigo de volta a casa.",
     "home.tagline": "10 segundos para trazer um amigo de volta a casa.",
     "home.foundButton": "ENCONTREI UM CÃO",
@@ -413,12 +386,6 @@ export const TRANSLATIONS: Record<string, Translations> = {
     "home.foundButton": "БИ НОХОЙ ОЛЛОО",
     "home.registerButton": "Гэрийн тэжээвэр амьтан бүртгэх",
     "footer.freeRegistry": "Олон улсын аюулгүй байдлын үнэ төлбөргүй бүртгэл",
-  },da: {
-    "site.description": "10 sekunder til at bringe en ven hjem.",
-    "home.tagline": "10 sekunder til at bringe en ven hjem.",
-    "home.foundButton": "JEG HAR FUNDET EN HUND",
-    "home.registerButton": "Registrer kæledyr",
-    "footer.freeRegistry": "Gratis internationalt sikkerhedsregister",
   },
   zu: {
     "site.description": "Imizuzwana eyi-10 ukubuyisela umngane ekhaya.",
@@ -502,14 +469,7 @@ export const TRANSLATIONS: Record<string, Translations> = {
     "home.registerButton": "Öý haýwanyny каттоо",
     "footer.freeRegistry": "Mugt halkara howpsuzlyk reýestri",
   },
-  ms: {
-    "site.description": "10 saat untuk membawa pulang rakan.",
-    "home.tagline": "10 saat untuk membawa pulang rakan.",
-    "home.foundButton": "SAYA JUMPA ANJING",
-    "home.registerButton": "Daftar haiwan peliharaan",
-    "footer.freeRegistry": "Pendaftaran keselamatan antarabangsa percuma",
-  },
-  jv: {
+    jv: {
     "site.description": "10 detik kanggo nggawa kanca bali menyang omah.",
     "home.tagline": "10 detik kanggo nggawa kanca bali menyang omah.",
     "home.foundButton": "AKU NEMU ASU",

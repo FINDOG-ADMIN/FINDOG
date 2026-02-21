@@ -27,11 +27,12 @@ function normalizeTag(tag: string): string {
 }
 
 function matchNavigatorLocale(navLang: string): Locale | undefined {
-  const normalized = normalizeTag(navLang);
+  const normalized = locale?.toLowerCase();
+  if (!normalized) return undefined;
   if (isSupportedLocale(normalized)) return normalized;
 
-  const base = normalized.split("-")[0];
-  if (!base) return undefined;
+  const base = (normalized as string).split("-")[0];
+  if (!base) return undefined; 
 
   // Prefer a specific variant where our list needs it
   if (base === "sr") return "sr-Latn";

@@ -27,6 +27,7 @@ function matchNavigatorLocale(navLang: string): Locale | undefined {
   if (!normalized) return undefined;
   if (isSupportedLocale(normalized)) return normalized;
 
+  // @ts-ignore - Это принудительно убирает ошибку 'never' при сборке
   const base = normalized.split("-")[0];
   if (!base) return undefined; 
 

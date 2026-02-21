@@ -27,19 +27,21 @@ function normalizeTag(tag: string): string {
 }
 
 function matchNavigatorLocale(navLang: string): Locale | undefined {
-  const normalized = locale?.toLowerCase();
+  // Исправлено: используем navLang (аргумент), а не внешнюю переменную locale
+  const normalized = navLang.toLowerCase();
   if (!normalized) return undefined;
+  
   if (isSupportedLocale(normalized)) return normalized;
 
-  const base = (normalized as string).split("-")[0];
+  const base = normalized.split("-")[0];
   if (!base) return undefined; 
 
-  // Prefer a specific variant where our list needs it
+  // Специальный случай для сербского
   if (base === "sr") return "sr-Latn";
 
-  // Otherwise match by base language
+  // Поиск по базовому коду языка
   const found = SORTED_LANGUAGES.find((l) => l.code.toLowerCase() === base);
-  return found?.code;
+  return found ? (found.code as Locale) : undefined;
 }
 
 export function I18nProvider({
@@ -60,9 +62,9 @@ export function I18nProvider({
     }
   }, []);
 
-  // Determine locale (priority: localStorage -> navigator.language -> cf-ipcountry -> English)
+  // Определение локали (приоритет: localStorage -> navigator.language -> начальная локаль)
   useEffect(() => {
-    // 1) localStorage (manual selection)
+    // 1) Проверка localStorage
     try {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored && isSupportedLocale(stored)) {
@@ -73,7 +75,7 @@ export function I18nProvider({
       // ignore
     }
 
-    // 2) navigator.language
+    // 2) Проверка navigator.language
     const nav = typeof navigator !== "undefined" ? navigator.language : "";
     if (nav) {
       const matched = matchNavigatorLocale(nav);
@@ -83,27 +85,31 @@ export function I18nProvider({
       }
     }
 
-    // 3) Cloudflare header-derived locale (server hint)
-    if (initialLocaleFromCountry) {
+    // 3) Использование локали от сервера (Cloudflare country hint)
+    if (initialLocaleFromCountry && isSupportedLocale(initialLocaleFromCountry)) {
       setLocaleState(initialLocaleFromCountry);
       return;
     }
 
-    // 4) fallback
+    // 4) Запасной вариант - английский
     setLocaleState("en");
   }, [initialLocaleFromCountry]);
 
   const dir = useMemo(() => getLocaleDir(locale), [locale]);
 
-  // Keep document element in sync (helps for caret direction, selection, etc.)
+  // Синхронизация атрибутов HTML (lang и dir)
   useEffect(() => {
-    document.documentElement.lang = locale;
-    document.documentElement.dir = dir;
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = locale;
+      document.documentElement.dir = dir;
+    }
   }, [dir, locale]);
 
   const t = useCallback(
     (key: TranslationKey) => {
-      const value = TRANSLATIONS[locale]?.[key] ?? EN_TRANSLATIONS[key];
+      // Безопасный доступ к переводам
+      const translationsForLocale = TRANSLATIONS[locale as keyof typeof TRANSLATIONS];
+      const value = (translationsForLocale as any)?.[key] ?? (EN_TRANSLATIONS as any)[key];
       return value ?? String(key);
     },
     [locale],
@@ -122,4 +128,3 @@ export function I18nProvider({
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
 }
-

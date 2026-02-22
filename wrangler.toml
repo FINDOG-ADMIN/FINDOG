@@ -1,0 +1,8 @@
+name = "findog"
+compatibility_date = "2026-02-22"
+pages_build_output_dir = ".next"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "findog-db"
+database_id = "ccf05fce-4e42-4afc-8726-0849c715182b"

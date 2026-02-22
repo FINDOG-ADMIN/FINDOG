@@ -1,6 +1,6 @@
 name = "findog"
 compatibility_date = "2026-02-22"
-pages_build_output_dir = ".next"
+pages_build_output_dir = ".vercel/output/static"
 
 [[d1_databases]]
 binding = "DB"

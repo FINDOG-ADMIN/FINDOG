@@ -54,13 +54,15 @@ export default function LanguageSelector() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm text-white/90 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/20"
+        className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm text-white/90 hover:bg-white/10 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all"
         aria-haspopup="menu"
         aria-expanded={open}
       >
-        <span className="text-white/60">{t("header.language")}</span>
-        <span className="font-semibold">{currentLabel}</span>
-        <span aria-hidden className="text-white/60">
+        <span className="text-white/40 uppercase text-[10px] tracking-wider font-medium">
+          {t("header.language")}
+        </span>
+        <span className="font-bold">{currentLabel}</span>
+        <span aria-hidden className={`text-white/40 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
           ▾
         </span>
       </button>
@@ -68,19 +70,29 @@ export default function LanguageSelector() {
       {open && (
         <div
           role="menu"
-          className="absolute right-0 mt-2 w-[min(22rem,calc(100vw-2rem))] rounded-2xl border border-white/15 bg-black/95 backdrop-blur p-3 shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+          /* КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ:
+             На мобильных: left-1/2 -translate-x-1/2 (центровка)
+             На ПК (md): left-auto right-0 translate-x-0 (по правому краю кнопки)
+          */
+          className="absolute left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 mt-3 w-[min(20rem,calc(100vw-2rem))] rounded-2xl border border-white/15 bg-[#0a0a0a] backdrop-blur-2xl p-3 shadow-[0_25px_70px_rgba(0,0,0,0.9)] z-[200]"
         >
-          <input
-            ref={searchRef}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={t("language.searchPlaceholder")}
-            className="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white/20"
-          />
+          {/* Поле поиска */}
+          <div className="relative mb-3">
+            <input
+              ref={searchRef}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={t("language.searchPlaceholder")}
+              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-red-600/50 transition-colors"
+            />
+          </div>
 
-          <div className="mt-3 max-h-72 overflow-y-auto overscroll-contain pr-1">
+          {/* Список языков */}
+          <div className="max-h-[50vh] md:max-h-72 overflow-y-auto overscroll-contain pr-1 custom-scrollbar">
             {filtered.length === 0 ? (
-              <div className="px-3 py-4 text-sm text-white/60">{t("language.noResults")}</div>
+              <div className="px-3 py-6 text-sm text-white/30 text-center italic">
+                {t("language.noResults")}
+              </div>
             ) : (
               <ul className="space-y-1">
                 {filtered.map((l) => {
@@ -92,15 +104,17 @@ export default function LanguageSelector() {
                         role="menuitem"
                         onClick={() => onPick(l.code)}
                         className={[
-                          "w-full rounded-xl px-3 py-2 text-left text-sm",
+                          "w-full rounded-xl px-4 py-3 text-left text-sm transition-all duration-200",
                           active
-                            ? "bg-red-600/20 text-white border border-red-600/30"
-                            : "text-white/85 hover:bg-white/10 border border-transparent",
+                            ? "bg-red-600 text-white font-bold shadow-lg shadow-red-900/20"
+                            : "text-white/60 hover:bg-white/5 hover:text-white",
                         ].join(" ")}
                       >
-                        <div className="flex items-center justify-between gap-3">
-                          <span className="font-medium">{l.label}</span>
-                          <span className="text-xs text-white/45">{l.code}</span>
+                        <div className="flex items-center justify-between gap-4">
+                          <span className="tracking-tight">{l.label}</span>
+                          <span className={`text-[10px] font-mono uppercase ${active ? 'text-white/70' : 'text-white/20'}`}>
+                            {l.code}
+                          </span>
                         </div>
                       </button>
                     </li>
@@ -114,4 +128,3 @@ export default function LanguageSelector() {
     </div>
   );
 }
-

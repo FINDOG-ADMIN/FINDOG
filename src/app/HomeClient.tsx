@@ -11,9 +11,11 @@ export default function HomeClient() {
       <div className="w-full max-w-md space-y-8">
         <div className="space-y-4 px-2">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter break-words px-2">
-            FINDOG<span className="text-red-600">.NET</span>
+            {t("home.title")}
           </h1>
-          <p className="text-lg sm:text-xl text-gray-400 font-medium px-2">{t("home.tagline")}</p>
+          <p className="text-lg sm:text-xl text-gray-400 font-medium px-2">
+            {t("home.subtitle")}
+          </p>
         </div>
 
         <div className="flex flex-col gap-6 pt-8">

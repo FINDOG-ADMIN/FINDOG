@@ -10,10 +10,10 @@ export default function HomeClient() {
     <div className="flex flex-col items-center justify-center text-center">
       <div className="w-full max-w-md space-y-8">
         <div className="space-y-4 px-2">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter break-words px-2">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight break-words px-2">
             {t("home.title")}
           </h1>
-          <p className="text-lg sm:text-xl text-gray-400 font-medium px-2">
+          <p className="text-lg sm:text-xl text-gray-400 font-medium tracking-[0.2em] px-2 uppercase">
             {t("home.subtitle")}
           </p>
         </div>

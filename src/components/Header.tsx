@@ -10,32 +10,37 @@ export default function Header() {
   const isLoggedIn = false;
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/70 backdrop-blur font-sans">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-3">
+    <header className="sticky top-0 z-50 w-full border-b border-white/5 bg-black/80 backdrop-blur-md font-sans">
+      {/* Увеличили px до 6 для боковых отступов и max-w до 6xl для соразмерности */}
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
         
-        {/* Логотип в хедере */}
-        <Link href="/" className="font-bold tracking-tight text-white text-xl uppercase">
+        {/* Логотип: используем font-black и уменьшенный размер для компактности в шапке */}
+        <Link href="/" className="font-black tracking-tight text-white text-lg md:text-xl uppercase hover:opacity-80 transition-opacity">
           FINDOG<span className="text-red-600">.NET</span>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <LanguageSelector />
+        {/* Увеличили gap между LanguageSelector и кнопкой/разделителем */}
+        <div className="flex items-center gap-6 md:gap-10">
+          
+          <div className="flex items-center">
+            <LanguageSelector />
+          </div>
 
-          <div className="hidden sm:block w-[1px] h-6 bg-white/20 mx-1"></div>
+          {/* Разделитель стал еще деликатнее */}
+          <div className="hidden sm:block w-[1px] h-4 bg-white/10"></div>
 
           {isLoggedIn ? (
             <Link 
               href="/dashboard" 
-              className="px-4 py-1.5 rounded-full bg-white text-black text-sm font-bold hover:bg-gray-200 transition-colors"
+              className="px-5 py-2 rounded-xl bg-white text-black text-[10px] font-black hover:bg-gray-200 transition-colors uppercase"
             >
               {t("contact.title") || "Cabinet"}
             </Link>
           ) : (
             <Link 
               href="/login" 
-              className="px-4 py-1.5 rounded-full border border-white/30 text-white text-[11px] font-bold hover:bg-white hover:text-black transition-all uppercase tracking-widest"
+              className="px-5 py-2 rounded-xl border border-white/20 text-white text-[10px] font-black hover:bg-white hover:text-black transition-all uppercase"
             >
-              {/* Теперь здесь только ключ. Он подтянет "MLEBU" для яванского, "ENTRAR" для португальского и т.д. */}
               {t("auth.login")}
             </Link>
           )}

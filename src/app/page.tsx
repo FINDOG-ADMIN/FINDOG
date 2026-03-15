@@ -9,14 +9,15 @@ export default function Page() {
 
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center text-center px-4">
+      
       {/* 1. Секция Логотипа и Слогана */}
       <div className="mb-20 space-y-6">
-        {/* Логотип уменьшен: был 4xl/6xl, стал 2xl/4xl */}
+        {/* Логотип: умеренный размер 2xl/4xl */}
         <h1 className="text-2xl md:text-4xl font-black tracking-tighter text-white uppercase select-none">
           FINDOG<span className="text-red-600">.NET</span>
         </h1>
         
-        {/* Расшифровка увеличена: была 10px/xs, стала 12px/sm */}
+        {/* Расшифровка: более заметная и читаемая */}
         <p className="text-[12px] md:text-sm uppercase tracking-[0.5em] text-white/40 font-mono leading-relaxed max-w-[300px] md:max-w-none">
           {t("home.tagline") || "FILTERING INBOUND DATA & OBSERVATION GATE"}
         </p>
@@ -29,7 +30,7 @@ export default function Page() {
         </div>
       </div>
 
-      {/* 2. Центральная кнопка POWER (Без уголков и лишнего текста) */}
+      {/* 2. Центральная кнопка POWER (Возвращенная форма rounded-3xl) */}
       <div className="flex justify-center w-full">
         <Link href="/login" className="group relative">
           <div className="
@@ -37,12 +38,14 @@ export default function Page() {
             flex items-center justify-center 
             bg-transparent 
             border border-white/5 
-            rounded-full
+            rounded-3xl 
             transition-all duration-700 
             group-hover:border-red-600/40
             group-hover:shadow-[0_0_40px_rgba(220,38,38,0.1)]
+            group-hover:scale-[1.02]
+            active:scale-95
           ">
-            {/* Иконка Power (SVG) — теперь это единственный акцент */}
+            {/* Иконка Power (SVG) */}
             <svg 
               viewBox="0 0 24 24" 
               className="w-10 h-10 md:w-12 md:h-12 text-white/20 group-hover:text-red-600 transition-all duration-700"
@@ -59,11 +62,18 @@ export default function Page() {
         </Link>
       </div>
 
-      {/* 3. Техническая сводка (в самом низу для баланса) */}
-      <div className="mt-24 flex items-center space-x-6 text-[9px] text-white/5 uppercase tracking-widest font-mono">
-        <span>Nodes: Operational</span>
-        <span>L-2 Secure</span>
+      {/* 3. Деликатный технический статус внизу */}
+      <div className="mt-24 opacity-20 flex items-center space-x-6 text-[9px] text-white uppercase tracking-[0.3em] font-mono">
+        <div className="flex items-center gap-2">
+          <span className="w-1 h-1 bg-green-500 rounded-full"></span>
+          <span>Nodes: Operational</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="w-1 h-1 bg-green-500 rounded-full"></span>
+          <span>L-2 Secure</span>
+        </div>
       </div>
+
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { headers } from "next/headers";
 import { localeFromCountry } from "@/i18n/detect";
 import { I18nProvider } from "@/i18n/I18nProvider";
 import AppShell from "@/components/AppShell";
-import Header from "@/components/Header"; // Импортируем наш новый хедер
+import Header from "@/components/Header";
 
 export const runtime = 'edge';
 
@@ -29,8 +29,10 @@ export default async function RootLayout({
   const initialLocaleFromCountry = localeFromCountry(country);
 
   return (
-    <html lang="en" className="bg-black scroll-smooth">
-      <body className={`${inter.variable} antialiased bg-black text-white min-h-screen`}>
+    /* ИЗМЕНЕНИЕ: bg-white вместо bg-black */
+    <html lang="en" className="bg-white scroll-smooth">
+      {/* ИЗМЕНЕНИЕ: bg-white и text-black для всей системы */}
+      <body className={`${inter.variable} antialiased bg-white text-black min-h-screen font-sans`}>
         <I18nProvider initialLocaleFromCountry={initialLocaleFromCountry}>
           <Header /> 
           <AppShell>

@@ -54,15 +54,16 @@ export default function LanguageSelector() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-sm text-white/90 hover:bg-white/10 focus:outline-none focus:ring-1 focus:ring-white/30 transition-all"
+        /* ИЗМЕНЕНИЕ: Инверсия кнопки под светлую тему */
+        className="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-black/5 px-3 py-2 text-sm text-black hover:bg-black/10 focus:outline-none focus:ring-1 focus:ring-black/20 transition-all"
         aria-haspopup="menu"
         aria-expanded={open}
       >
-        <span className="text-white/40 uppercase text-[10px] tracking-wider font-medium">
+        <span className="text-black/30 uppercase text-[10px] tracking-wider font-medium">
           {t("header.language")}
         </span>
         <span className="font-bold">{currentLabel}</span>
-        <span aria-hidden className={`text-white/40 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
+        <span aria-hidden className={`text-black/30 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
           ▾
         </span>
       </button>
@@ -70,27 +71,23 @@ export default function LanguageSelector() {
       {open && (
         <div
           role="menu"
-          /* КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ:
-             На мобильных: left-1/2 -translate-x-1/2 (центровка)
-             На ПК (md): left-auto right-0 translate-x-0 (по правому краю кнопки)
-          */
-          className="absolute left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 mt-3 w-[min(20rem,calc(100vw-2rem))] rounded-2xl border border-white/15 bg-[#0a0a0a] backdrop-blur-2xl p-3 shadow-[0_25px_70px_rgba(0,0,0,0.9)] z-[200]"
+          /* ИЗМЕНЕНИЕ: Белый фон меню, светлая тень и темные границы */
+          className="absolute left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 mt-3 w-[min(20rem,calc(100vw-2rem))] rounded-2xl border border-black/10 bg-white p-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)] z-[200]"
         >
-          {/* Поле поиска */}
+          {/* Поле поиска: Светлая инверсия */}
           <div className="relative mb-3">
             <input
               ref={searchRef}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t("language.searchPlaceholder")}
-              className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-red-600/50 transition-colors"
+              className="w-full rounded-xl border border-black/5 bg-black/5 px-4 py-2.5 text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-red-600/30 transition-colors"
             />
           </div>
 
-          {/* Список языков */}
-          <div className="max-h-[50vh] md:max-h-72 overflow-y-auto overscroll-contain pr-1 custom-scrollbar">
+          <div className="max-h-[50vh] md:max-h-72 overflow-y-auto pr-1">
             {filtered.length === 0 ? (
-              <div className="px-3 py-6 text-sm text-white/30 text-center italic">
+              <div className="px-3 py-6 text-sm text-black/30 text-center italic">
                 {t("language.noResults")}
               </div>
             ) : (
@@ -106,13 +103,14 @@ export default function LanguageSelector() {
                         className={[
                           "w-full rounded-xl px-4 py-3 text-left text-sm transition-all duration-200",
                           active
-                            ? "bg-red-600 text-white font-bold shadow-lg shadow-red-900/20"
-                            : "text-white/60 hover:bg-white/5 hover:text-white",
+                            /* Активный элемент остается красным — это наш бренд-акцент */
+                            ? "bg-red-600 text-white font-bold shadow-md shadow-red-600/10"
+                            : "text-black/60 hover:bg-black/5 hover:text-black",
                         ].join(" ")}
                       >
                         <div className="flex items-center justify-between gap-4">
                           <span className="tracking-tight">{l.label}</span>
-                          <span className={`text-[10px] font-mono uppercase ${active ? 'text-white/70' : 'text-white/20'}`}>
+                          <span className={`text-[10px] font-mono uppercase ${active ? 'text-white/70' : 'text-black/20'}`}>
                             {l.code}
                           </span>
                         </div>

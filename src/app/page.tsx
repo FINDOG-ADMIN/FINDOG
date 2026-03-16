@@ -4,18 +4,23 @@ import React from "react";
 import Link from "next/link";
 import { useI18n } from "@/i18n/useI18n";
 
+// Константа для шрифтового стека, чтобы Inter был приоритетным
+const fontStack = "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+
 export default function Page() {
   const { t } = useI18n();
 
   return (
-    <div className="flex min-h-[70vh] flex-col items-center justify-center text-center px-4">
+    <div className="flex min-h-[70vh] flex-col items-center justify-center text-center px-4" style={{ fontFamily: fontStack }}>
       
       <div className="mb-20 space-y-6">
-        <h1 className="text-2xl md:text-4xl font-black tracking-tighter text-white uppercase select-none">
+        {/* Удален tracking-tighter, оставлен авторский интервал Inter */}
+        <h1 className="text-2xl md:text-4xl font-black text-white uppercase select-none">
           FINDOG<span className="text-red-600">.NET</span>
         </h1>
         
-        <p className="text-[12px] md:text-sm uppercase tracking-[0.5em] text-white/40 font-mono leading-relaxed max-w-[300px] md:max-w-none">
+        {/* Удален tracking-[0.5em], оставлен авторский интервал. Цвет заменен на white/20 для чистоты */}
+        <p className="text-[12px] md:text-sm uppercase text-white/20 leading-relaxed max-w-[300px] md:max-w-none">
           FILTERING INBOUND DATA OBSERVATION GATE
         </p>
       </div>
@@ -50,7 +55,8 @@ export default function Page() {
         </Link>
       </div>
 
-      <div className="mt-24 opacity-20 flex items-center space-x-6 text-[9px] text-white uppercase tracking-[0.3em] font-mono">
+      {/* Удален tracking-[0.3em], оставлен авторский интервал */}
+      <div className="mt-24 opacity-20 flex items-center space-x-6 text-[9px] text-white uppercase">
         <div className="flex items-center gap-2">
           <span className="w-1 h-1 bg-green-500 rounded-full"></span>
           <span>Nodes: Operational</span>

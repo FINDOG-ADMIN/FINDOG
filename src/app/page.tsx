@@ -11,16 +11,16 @@ export default function Page() {
   const { t } = useI18n();
 
   return (
-    /* Фон теперь идеально белый, текст — радикально черный */
-    <div className="flex min-h-[70vh] flex-col items-center justify-center text-center px-4 bg-white text-black" style={{ fontFamily: fontStack }}>
+    /* ИЗМЕНЕНИЕ: bg-white теперь применяется к основному контейнеру h-screen.
+       Добавлено h-screen и w-full для полного заполнения пространства.
+    */
+    <div className="flex h-screen w-full flex-col items-center justify-center text-center px-4 bg-white text-black" style={{ fontFamily: fontStack }}>
       
       <div className="mb-20 space-y-6">
-        {/* Заголовок в глубоком черном с красным акцентом */}
         <h1 className="text-2xl md:text-4xl font-black uppercase select-none">
           FINDOG<span className="text-red-600">.NET</span>
         </h1>
         
-        {/* Слоган: теперь он серый (black/30) для легкости, но читается идеально */}
         <p className="text-[12px] md:text-sm uppercase text-black/30 leading-relaxed max-w-[300px] md:max-w-none">
           FILTERING INBOUND DATA OBSERVATION GATE
         </p>
@@ -40,7 +40,6 @@ export default function Page() {
             group-hover:scale-[1.02]
             active:scale-95
           ">
-            {/* Иконка стала темной, при наведении — красной */}
             <svg 
               viewBox="0 0 24 24" 
               className="w-10 h-10 md:w-12 md:h-12 text-black/10 group-hover:text-red-600 transition-all duration-700"
@@ -57,7 +56,6 @@ export default function Page() {
         </Link>
       </div>
 
-      {/* Футер: статусы теперь выглядят как строгий отчет на бумаге */}
       <div className="mt-24 opacity-40 flex items-center space-x-6 text-[9px] text-black uppercase">
         <div className="flex items-center gap-2">
           <span className="w-1 h-1 bg-red-600 rounded-full"></span>

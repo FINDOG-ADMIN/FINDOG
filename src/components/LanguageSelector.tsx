@@ -54,16 +54,15 @@ export default function LanguageSelector() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        /* ИЗМЕНЕНИЕ: Инверсия кнопки под светлую тему */
-        className="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-black/5 px-3 py-2 text-sm text-black hover:bg-black/10 focus:outline-none focus:ring-1 focus:ring-black/20 transition-all"
+        className="inline-flex items-center gap-2 rounded-xl border border-black/[0.06] bg-transparent px-4 py-2 text-sm text-black hover:bg-black/[0.02] focus:outline-none transition-all active:scale-95"
         aria-haspopup="menu"
         aria-expanded={open}
       >
-        <span className="text-black/30 uppercase text-[10px] tracking-wider font-medium">
+        <span className="text-black/30 uppercase text-[10px] tracking-wider font-bold">
           {t("header.language")}
         </span>
-        <span className="font-bold">{currentLabel}</span>
-        <span aria-hidden className={`text-black/30 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>
+        <span className="font-bold text-[11px] uppercase tracking-tighter">{currentLabel}</span>
+        <span aria-hidden className={`text-black/20 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}>
           ▾
         </span>
       </button>
@@ -71,21 +70,19 @@ export default function LanguageSelector() {
       {open && (
         <div
           role="menu"
-          /* ИЗМЕНЕНИЕ: Белый фон меню, светлая тень и темные границы */
-          className="absolute left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 mt-3 w-[min(20rem,calc(100vw-2rem))] rounded-2xl border border-black/10 bg-white p-3 shadow-[0_20px_50px_rgba(0,0,0,0.1)] z-[200]"
+          className="absolute left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 mt-3 w-[min(20rem,calc(100vw-2rem))] rounded-2xl border border-black/[0.05] bg-white p-3 shadow-[0_30px_60px_rgba(0,0,0,0.08)] z-[200]"
         >
-          {/* Поле поиска: Светлая инверсия */}
           <div className="relative mb-3">
             <input
               ref={searchRef}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={t("language.searchPlaceholder")}
-              className="w-full rounded-xl border border-black/5 bg-black/5 px-4 py-2.5 text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-red-600/30 transition-colors"
+              className="w-full rounded-xl border border-black/[0.03] bg-black/[0.03] px-4 py-3 text-sm text-black placeholder:text-black/20 focus:outline-none focus:border-red-600/20 transition-colors"
             />
           </div>
 
-          <div className="max-h-[50vh] md:max-h-72 overflow-y-auto pr-1">
+          <div className="max-h-72 overflow-y-auto pr-1">
             {filtered.length === 0 ? (
               <div className="px-3 py-6 text-sm text-black/30 text-center italic">
                 {t("language.noResults")}
@@ -103,9 +100,8 @@ export default function LanguageSelector() {
                         className={[
                           "w-full rounded-xl px-4 py-3 text-left text-sm transition-all duration-200",
                           active
-                            /* Активный элемент остается красным — это наш бренд-акцент */
-                            ? "bg-red-600 text-white font-bold shadow-md shadow-red-600/10"
-                            : "text-black/60 hover:bg-black/5 hover:text-black",
+                            ? "bg-red-600 text-white font-bold"
+                            : "text-black/60 hover:bg-black/[0.03] hover:text-black",
                         ].join(" ")}
                       >
                         <div className="flex items-center justify-between gap-4">

@@ -23,10 +23,6 @@ export default function Header() {
   return (
     <>
       <header className={`sticky top-0 z-[100] w-full transition-all duration-500 ${
-        /* ИЗМЕНЕНИЕ: 
-           В покое (!isScrolled) - фон прозрачный, границ нет.
-           В движении (isScrolled) - чисто белый фон 95% и тончайшая граница.
-        */
         isScrolled 
           ? 'bg-white/95 border-b border-black/[0.03] py-3 backdrop-blur-lg' 
           : 'bg-transparent border-b border-transparent py-5'
@@ -39,7 +35,7 @@ export default function Header() {
           <div className="hidden md:flex items-center gap-10">
             <LanguageSelector />
             <div className="w-[1px] h-4 bg-black/[0.05]"></div>
-            <Link href="/login" className="px-5 py-2 rounded-xl border border-black/10 text-black text-[10px] font-black hover:bg-black hover:text-white transition-all uppercase">
+            <Link href="/login" className="px-6 py-2 rounded-xl border border-black/[0.08] text-black/80 text-[10px] font-bold hover:bg-black hover:text-white transition-all uppercase active:scale-95">
               {t("auth.login")}
             </Link>
           </div>
@@ -54,11 +50,10 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Мобильное меню: Чисто белый фон */}
       <div className={`fixed inset-0 z-[90] bg-white transition-all duration-500 ${isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'} md:hidden flex flex-col items-center justify-center`}>
         <nav className="flex flex-col items-center gap-12 w-full px-10">
           <LanguageSelector />
-          <Link href="/login" onClick={() => setIsMenuOpen(false)} className="w-full max-w-xs py-5 bg-red-600 text-white text-center rounded-2xl text-sm font-black uppercase tracking-widest">
+          <Link href="/login" onClick={() => setIsMenuOpen(false)} className="w-full max-w-xs py-5 bg-red-600 text-white text-center rounded-2xl text-sm font-black uppercase tracking-widest shadow-xl shadow-red-600/10">
             {t("auth.login")}
           </Link>
           <button onClick={() => setIsMenuOpen(false)} className="mt-8 text-black/20 uppercase text-[9px] tracking-[0.4em] font-mono">[ Close ]</button>

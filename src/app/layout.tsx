@@ -29,10 +29,9 @@ export default async function RootLayout({
   const initialLocaleFromCountry = localeFromCountry(country);
 
   return (
-    /* ИЗМЕНЕНИЕ: bg-white вместо bg-black */
+    // Убираем инлайновые стили, оставляем только чистые Tailwind классы
     <html lang="en" className="bg-white scroll-smooth">
-      {/* ИЗМЕНЕНИЕ: bg-white и text-black для всей системы */}
-      <body className={`${inter.variable} antialiased bg-white text-black min-h-screen font-sans`}>
+      <body className={`${inter.variable} font-sans antialiased bg-white text-black min-h-screen`}>
         <I18nProvider initialLocaleFromCountry={initialLocaleFromCountry}>
           <Header /> 
           <AppShell>

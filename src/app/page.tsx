@@ -12,18 +12,17 @@ export default function Page() {
       
       {/* 1. Секция Логотипа и Слогана */}
       <div className="mb-20 space-y-6">
-        {/* Логотип: умеренный размер 2xl/4xl */}
         <h1 className="text-2xl md:text-4xl font-black tracking-tighter text-white uppercase select-none">
           FINDOG<span className="text-red-600">.NET</span>
         </h1>
         
-        {/* Расшифровка: без амперсанда */}
+        {/* Здесь убираем & из текста по умолчанию */}
         <p className="text-[12px] md:text-sm uppercase tracking-[0.5em] text-white/40 font-mono leading-relaxed max-w-[300px] md:max-w-none">
           {t("home.tagline") || "FILTERING INBOUND DATA OBSERVATION GATE"}
         </p>
       </div>
 
-      {/* 2. Центральная кнопка POWER (Форма rounded-3xl) */}
+      {/* 2. Центральная кнопка POWER */}
       <div className="flex justify-center w-full">
         <Link href="/login" className="group relative">
           <div className="
@@ -38,7 +37,6 @@ export default function Page() {
             group-hover:scale-[1.02]
             active:scale-95
           ">
-            {/* Иконка Power (SVG) */}
             <svg 
               viewBox="0 0 24 24" 
               className="w-10 h-10 md:w-12 md:h-12 text-white/20 group-hover:text-red-600 transition-all duration-700"
@@ -55,7 +53,7 @@ export default function Page() {
         </Link>
       </div>
 
-      {/* 3. Деликатный технический статус внизу */}
+      {/* 3. Деликатный технический статус */}
       <div className="mt-24 opacity-20 flex items-center space-x-6 text-[9px] text-white uppercase tracking-[0.3em] font-mono">
         <div className="flex items-center gap-2">
           <span className="w-1 h-1 bg-green-500 rounded-full"></span>

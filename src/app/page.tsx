@@ -17,20 +17,13 @@ export default function Page() {
           FINDOG<span className="text-red-600">.NET</span>
         </h1>
         
-        {/* Расшифровка обновлена: убран амперсанд & */}
+        {/* Расшифровка: без амперсанда */}
         <p className="text-[12px] md:text-sm uppercase tracking-[0.5em] text-white/40 font-mono leading-relaxed max-w-[300px] md:max-w-none">
           {t("home.tagline") || "FILTERING INBOUND DATA OBSERVATION GATE"}
         </p>
-
-        {/* Минималистичный разделитель */}
-        <div className="flex justify-center items-center gap-4 pt-2">
-          <div className="h-[1px] w-10 bg-white/10"></div>
-          <div className="h-1 w-1 rounded-full bg-red-600/50"></div>
-          <div className="h-[1px] w-10 bg-white/10"></div>
-        </div>
       </div>
 
-      {/* 2. Центральная кнопка POWER (Контрольный образец формы) */}
+      {/* 2. Центральная кнопка POWER (Форма rounded-3xl) */}
       <div className="flex justify-center w-full">
         <Link href="/login" className="group relative">
           <div className="
@@ -41,7 +34,7 @@ export default function Page() {
             rounded-3xl 
             transition-all duration-700 
             group-hover:border-red-600/40
-            group-hover:shadow-[0_0_40px_rgba(220,38,38,0.15)]
+            group-hover:shadow-[0_0_40px_rgba(220,38,38,0.1)]
             group-hover:scale-[1.02]
             active:scale-95
           ">

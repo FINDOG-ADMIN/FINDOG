@@ -1,38 +1,65 @@
 @import "tailwindcss";
 
 :root {
-  /* Чистый черный для идеального слияния слоев */
-  --background: #000000; 
-  --foreground: #ededed;
+  /* Базовые цвета системы */
+  --background: #ffffff;
+  --foreground: #000000;
+  
+  /* Переменная для шрифта, которую передает Next.js */
+  --font-inter: "Inter", sans-serif;
 }
 
-@theme inline {
+@theme {
+  /* Интеграция переменных в движок Tailwind v4 */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
 }
 
-/* Удаляем или приравниваем к черному медиа-запрос, 
-   чтобы фон не «светлел» сам по себе */
+/* Принудительная блокировка темной темы на уровне CSS */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000000;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #000000;
   }
 }
 
 html,
 body {
+  /* Устранение горизонтального скролла и фиксация фона */
   overflow-x: hidden;
   max-width: 100vw;
-  background-color: #000000; /* Гарантия для старых браузеров */
+  background-color: #ffffff !important;
 }
 
 body {
+  /* Применение системных настроек к телу документа */
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  -webkit-font-smoothing: antialiased; /* Делает шрифт Inter более четким */
+  font-family: var(--font-sans);
+  
+  /* Улучшение рендеринга шрифтов на всех устройствах */
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Гарантия минимальной высоты для корректного скролла */
+  min-height: 100vh;
+}
+
+/* Кастомный скроллбар для поддержания минимализма */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e5e5e5;
 }
